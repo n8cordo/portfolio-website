@@ -1,0 +1,251 @@
+body {
+  font-family: 'Lora', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+
+  /*
+        Colors used (color background was deleted but im going to keep this here for now
+
+        Text Color (Dark Grey): #2b2b2b;
+        Primary Color (Purple): #880CED; or #EB00EB
+        Secondary Color (Dark Blue): #0D82EB
+        */
+}
+
+:root {
+  --primary-color-pink: #eb00eb;
+  --secondary-color-blue: #0d82eb;
+  --dark-grey: #2b2b2b;
+  --active-link-color-green: #489c79;
+  --button-background-color: darkblue;
+  --button-text-color: white;
+  --button-border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  --button-secondary-color: #e0b345;
+  --button-secondary-text-color: #2b2b2b;
+  --grid-item-background-color: lightgray;
+  --sun-animation-color-0: #edc655;
+  --sun-animation-color-50: #fcffad;
+  --sun-animation-color-100: #f76414;
+  --hover-scale: 1.05;
+  --h1-font-size: 30px;
+  --h2-font-size: 23px;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a :hover,
+a:focus {
+  /* no underlining when hovering over a link */
+  text-decoration: none;
+}
+
+a:visited {
+  /* visited link */
+  color: var(--secondary-color-blue);
+}
+
+a:active {
+  /* selected link */
+  color: var(--active-link-color-green);
+}
+
+.button,
+button {
+  /* overwrites browser defaults and resets the border */
+  border: none;
+  display: inline-block;
+
+  /* takes the font from the outer container */
+  font-family: inherit;
+
+  /* styles the background color, font color, and text decoration of the button */
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  text-decoration: none;
+
+  /* adds space to the button border */
+  padding: 10px;
+  border-radius: 3px;
+
+  /* gives the button a bottom border with a width of 2px, a type
+         of solid, and a color in RGBA format */
+  border-bottom: var(--button-border-bottom);
+  transition: opacity 0.3s;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+  /* lets mouse appear as hand when hovering */
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.button__secondary {
+  background-color: var(--button-secondary-color);
+  color: var(--button-secondary-text-color);
+}
+
+.navigation-list {
+  list-style-type: none;
+}
+
+.navigation-list li {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.navigation-list__item--active {
+  text-decoration: none;
+}
+
+.profile__portrait {
+  float: left;
+  width: 250px;
+  margin-right: 40px;
+  border-radius: 50%;
+}
+
+.page-header {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  border-bottom-style: ridge;
+}
+
+.page-header__item {
+  width: 310px;
+  flex: 0 1 200px;
+}
+
+.page-header__item:last-child {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.page-footer {
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.profile {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.about {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-list {
+  list-style-type: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.grid__item {
+  background-color: var(--grid-item-background-color);
+  transition: transform 0.3s ease; /* Adding transition for smoother effect */
+}
+
+.grid__item:hover {
+  transform: scale(var(--hover-scale)); /* Increase the size on hover */
+}
+
+@media all and (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .grid {
+    grid-gap: 10px;
+  }
+
+  .grid__item:last-child {
+    grid-column: auto / auto;
+    grid-row: auto / auto;
+  }
+
+  h1 {
+    font-size: var(--h1-font-size);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    fill: var(--sun-animation-color-0);
+  }
+
+  50% {
+    fill: var(--sun-animation-color-50);
+  }
+
+  100% {
+    fill: var(--sun-animation-color-100);
+  }
+}
+
+.sun {
+  animation: 4s color-change infinite alternate linear;
+}
+
+@keyframes cloud-move {
+  from {
+    transform: translate(0, 50px);
+  }
+
+  to {
+    transform: translate(200px, 50px);
+  }
+}
+
+.cloud-front {
+  animation: 30s cloud-move infinite alternate linear;
+}
+
+@keyframes cloud-move-reverse {
+  from {
+    transform: translate(446px, 48px);
+  }
+
+  to {
+    transform: translate(100px, 48px);
+  }
+}
+
+.cloud-back {
+  animation: 40s cloud-move-reverse infinite alternate linear;
+}
+
